@@ -1,0 +1,9 @@
+{
+  "event_id": "sample-013",
+  "event_type": "PLAN_SIGNED",
+  "aggregate_type": "recovery_plan",
+  "aggregate_id": "aggregate-013",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "康复下转责任交接领域样例"
+}
