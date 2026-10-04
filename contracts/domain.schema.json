@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "康复下转责任交接领域事件",
+  "description": "事件信封字段向后兼容：已登记的 5 个事件与 4 类聚合保持不变，新增事件与 referral_case 聚合仅做枚举扩展。",
   "type": "object",
   "required": [
     "event_id",
@@ -14,16 +15,42 @@
   "properties": {
     "event_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "事件全局唯一标识，重复 event_id 视为重复上报，不得产生第二次交接。"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "接入侧幂等键：同一 request_id 重复提交只生效一次。"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "一次下转案例的关联标识，串联计划、邀约、责任、随访、再上转各聚合。"
     },
     "event_type": {
       "type": "string",
       "enum": [
         "PLAN_SIGNED",
+        "PLAN_REVISED",
+        "PLAN_VERSION_DELIVERED",
+        "PLAN_VERSION_ACKNOWLEDGED",
         "HANDOFF_OFFERED",
+        "HANDOFF_DECLINED",
+        "HANDOFF_WITHDRAWN",
         "RESPONSIBILITY_ACCEPTED",
         "ARRIVAL_CONFIRMED",
-        "CARE_REESCALATED"
+        "PATIENT_NO_SHOW",
+        "TRANSFER_BLOCKED",
+        "ARRIVAL_RESCHEDULED",
+        "MEDICATION_UNAVAILABLE",
+        "FOLLOWUP_SCHEDULED",
+        "FOLLOWUP_RECORDED",
+        "FOLLOWUP_OVERDUE",
+        "CARE_REESCALATED",
+        "REESCALATION_RECEIVED",
+        "CASE_OPENED",
+        "CASE_CLOSED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +59,8 @@
         "recovery_plan",
         "handoff_offer",
         "care_responsibility",
-        "followup_result"
+        "followup_result",
+        "referral_case"
       ]
     },
     "aggregate_id": {
@@ -45,11 +73,17 @@
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "聚合内单调递增版本号，从 1 开始。"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件业务载荷，按事件类型约定，见 src/events.py 注册表。",
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

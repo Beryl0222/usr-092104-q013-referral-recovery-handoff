@@ -1,0 +1,547 @@
+[
+  {
+    "event_id": "evt-81d742550cb6",
+    "event_type": "CASE_OPENED",
+    "aggregate_type": "referral_case",
+    "aggregate_id": "case-sample-001",
+    "occurred_at": "2026-09-20T09:00:00+00:00",
+    "version": 1,
+    "summary": "开启下转案例：张某某（联调样例）",
+    "payload": {
+      "patient_ref": "张某某（联调样例）",
+      "patient_contact": "138-0000-0000",
+      "origin_org": "清溪县人民医院",
+      "origin_contact": "县医院转诊办 0577-12345",
+      "help_phone": "12320"
+    },
+    "case_id": "case-sample-001",
+    "seq": 1
+  },
+  {
+    "event_id": "evt-1adb60566a87",
+    "event_type": "PLAN_SIGNED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-20T09:20:00+00:00",
+    "version": 1,
+    "summary": "医生签署康复转出计划 v1",
+    "payload": {
+      "plan_version": 1,
+      "signed_by": "神经内科 李医生",
+      "diagnosis_summary": "脑梗死稳定期，右侧肢体肌力 4 级",
+      "rehab_summary": "肢体功能训练 + 作业治疗，每日一次",
+      "precautions": [
+        "防跌倒",
+        "血压控制目标 <140/90"
+      ],
+      "medications": [
+        {
+          "code": "M-ASP-001",
+          "name": "阿司匹林肠溶片",
+          "posology": "100mg qd"
+        },
+        {
+          "code": "M-AML-002",
+          "name": "苯磺酸氨氯地平片",
+          "posology": "5mg qd"
+        }
+      ],
+      "review_items": [
+        {
+          "code": "R-BP-01",
+          "name": "血压监测",
+          "schedule": "每日两次",
+          "threshold": "收缩压 >=180 触发上转评估"
+        },
+        {
+          "code": "R-LF-02",
+          "name": "肝肾功能",
+          "schedule": "下转后第 14 天"
+        }
+      ],
+      "required_capabilities": [
+        "medication",
+        "rehab_service",
+        "review_item"
+      ]
+    },
+    "case_id": "case-sample-001",
+    "seq": 2
+  },
+  {
+    "event_id": "evt-6dc938465bf0",
+    "event_type": "HANDOFF_OFFERED",
+    "aggregate_type": "handoff_offer",
+    "aggregate_id": "offer-dd2f4a5ac65c",
+    "occurred_at": "2026-09-20T11:20:00+00:00",
+    "version": 1,
+    "summary": "向 东岭乡卫生院 发起康复下转邀约（计划 v1）",
+    "payload": {
+      "target_org": "东岭乡卫生院",
+      "plan_version": 1,
+      "serviceable_from": "2026-09-21T11:20:00+00:00",
+      "expected_arrival_at": "2026-09-21T14:20:00+00:00",
+      "capabilities": [
+        "medication",
+        "rehab_service",
+        "review_item"
+      ],
+      "clinical_summary_minimal": {
+        "diagnosis_summary": "脑梗死稳定期，右侧肢体肌力 4 级",
+        "rehab_summary": "肢体功能训练 + 作业治疗，每日一次",
+        "precautions": [
+          "防跌倒",
+          "血压控制目标 <140/90"
+        ],
+        "medications": [
+          {
+            "code": "M-ASP-001",
+            "name": "阿司匹林肠溶片",
+            "posology": "100mg qd"
+          },
+          {
+            "code": "M-AML-002",
+            "name": "苯磺酸氨氯地平片",
+            "posology": "5mg qd"
+          }
+        ],
+        "review_items": [
+          {
+            "code": "R-BP-01",
+            "name": "血压监测",
+            "schedule": "每日两次",
+            "threshold": "收缩压 >=180 触发上转评估"
+          },
+          {
+            "code": "R-LF-02",
+            "name": "肝肾功能",
+            "schedule": "下转后第 14 天"
+          }
+        ]
+      }
+    },
+    "case_id": "case-sample-001",
+    "seq": 3
+  },
+  {
+    "event_id": "evt-eef882fe8498",
+    "event_type": "PLAN_VERSION_DELIVERED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-20T11:20:00+00:00",
+    "version": 2,
+    "summary": "计划 v1 送达 东岭乡卫生院",
+    "payload": {
+      "plan_version": 1,
+      "holder": "东岭乡卫生院"
+    },
+    "case_id": "case-sample-001",
+    "seq": 4
+  },
+  {
+    "event_id": "evt-aef1d595ad18",
+    "event_type": "HANDOFF_DECLINED",
+    "aggregate_type": "handoff_offer",
+    "aggregate_id": "offer-dd2f4a5ac65c",
+    "occurred_at": "2026-09-20T14:20:00+00:00",
+    "version": 2,
+    "summary": "东岭乡卫生院 拒绝下转邀约：康复治疗师外出培训，两周内无法排期",
+    "payload": {
+      "reason": "康复治疗师外出培训，两周内无法排期"
+    },
+    "case_id": "case-sample-001",
+    "seq": 5
+  },
+  {
+    "event_id": "evt-12405419647a",
+    "event_type": "HANDOFF_OFFERED",
+    "aggregate_type": "handoff_offer",
+    "aggregate_id": "offer-95e0b3d82d9c",
+    "occurred_at": "2026-09-20T15:20:00+00:00",
+    "version": 1,
+    "summary": "向 西河镇卫生院 发起康复下转邀约（计划 v1）",
+    "payload": {
+      "target_org": "西河镇卫生院",
+      "plan_version": 1,
+      "serviceable_from": "2026-09-21T15:20:00+00:00",
+      "expected_arrival_at": "2026-09-21T17:20:00+00:00",
+      "capabilities": [
+        "medication",
+        "rehab_service",
+        "review_item"
+      ],
+      "clinical_summary_minimal": {
+        "diagnosis_summary": "脑梗死稳定期，右侧肢体肌力 4 级",
+        "rehab_summary": "肢体功能训练 + 作业治疗，每日一次",
+        "precautions": [
+          "防跌倒",
+          "血压控制目标 <140/90"
+        ],
+        "medications": [
+          {
+            "code": "M-ASP-001",
+            "name": "阿司匹林肠溶片",
+            "posology": "100mg qd"
+          },
+          {
+            "code": "M-AML-002",
+            "name": "苯磺酸氨氯地平片",
+            "posology": "5mg qd"
+          }
+        ],
+        "review_items": [
+          {
+            "code": "R-BP-01",
+            "name": "血压监测",
+            "schedule": "每日两次",
+            "threshold": "收缩压 >=180 触发上转评估"
+          },
+          {
+            "code": "R-LF-02",
+            "name": "肝肾功能",
+            "schedule": "下转后第 14 天"
+          }
+        ]
+      }
+    },
+    "case_id": "case-sample-001",
+    "seq": 6
+  },
+  {
+    "event_id": "evt-66a548c1091b",
+    "event_type": "PLAN_VERSION_DELIVERED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-20T15:20:00+00:00",
+    "version": 3,
+    "summary": "计划 v1 送达 西河镇卫生院",
+    "payload": {
+      "plan_version": 1,
+      "holder": "西河镇卫生院"
+    },
+    "case_id": "case-sample-001",
+    "seq": 7
+  },
+  {
+    "event_id": "evt-31d2fbb11a89",
+    "event_type": "RESPONSIBILITY_ACCEPTED",
+    "aggregate_type": "care_responsibility",
+    "aggregate_id": "resp-case-sample-001",
+    "occurred_at": "2026-09-20T20:20:00+00:00",
+    "version": 1,
+    "summary": "西河镇卫生院 接受下转责任，可服务日期 2026-09-21",
+    "payload": {
+      "offer_id": "offer-95e0b3d82d9c",
+      "org": "西河镇卫生院",
+      "contact_person": "全科 王医生",
+      "contact_phone": "139-5555-0001",
+      "serviceable_from": "2026-09-21T15:20:00+00:00",
+      "scope_capabilities": [
+        "medication",
+        "rehab_service",
+        "review_item"
+      ],
+      "medication_codes": [
+        "M-AML-002",
+        "M-ASP-001"
+      ],
+      "review_codes": [
+        "R-BP-01",
+        "R-LF-02"
+      ],
+      "plan_version": 1
+    },
+    "case_id": "case-sample-001",
+    "seq": 8
+  },
+  {
+    "event_id": "evt-8103fdd4ae44",
+    "event_type": "PLAN_VERSION_ACKNOWLEDGED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-20T20:20:00+00:00",
+    "version": 4,
+    "summary": "西河镇卫生院 接受责任并确认计划 v1",
+    "payload": {
+      "plan_version": 1,
+      "holder": "西河镇卫生院",
+      "via": "responsibility_accepted"
+    },
+    "case_id": "case-sample-001",
+    "seq": 9
+  },
+  {
+    "event_id": "evt-98e4a8a08206",
+    "event_type": "ARRIVAL_CONFIRMED",
+    "aggregate_type": "care_responsibility",
+    "aggregate_id": "resp-case-sample-001",
+    "occurred_at": "2026-09-21T22:20:00+00:00",
+    "version": 2,
+    "summary": "患者已到达接收机构",
+    "payload": {
+      "at": "2026-09-21T22:20:00+00:00"
+    },
+    "case_id": "case-sample-001",
+    "seq": 10
+  },
+  {
+    "event_id": "evt-199c63fe92f4",
+    "event_type": "FOLLOWUP_SCHEDULED",
+    "aggregate_type": "followup_result",
+    "aggregate_id": "followup-ebb3e06f03ae",
+    "occurred_at": "2026-09-23T22:20:00+00:00",
+    "version": 1,
+    "summary": "预约随访，截止 2026-09-24T22:20:00+00:00",
+    "payload": {
+      "due_at": "2026-09-24T22:20:00+00:00",
+      "responsible_org": "西河镇卫生院",
+      "plan_version": 1
+    },
+    "case_id": "case-sample-001",
+    "seq": 11
+  },
+  {
+    "event_id": "evt-ba3c4f478b46",
+    "event_type": "FOLLOWUP_RECORDED",
+    "aggregate_type": "followup_result",
+    "aggregate_id": "followup-ebb3e06f03ae",
+    "occurred_at": "2026-09-24T22:20:00+00:00",
+    "version": 2,
+    "summary": "随访结果登记：abnormal",
+    "payload": {
+      "result": "abnormal",
+      "abnormal_items": [
+        {
+          "code": "R-LF-02",
+          "value": "肌酐 132",
+          "threshold_exceeded": false
+        }
+      ],
+      "note": "轻度升高，按计划 2 周后复查"
+    },
+    "case_id": "case-sample-001",
+    "seq": 12
+  },
+  {
+    "event_id": "evt-ef37c3df8783",
+    "event_type": "MEDICATION_UNAVAILABLE",
+    "aggregate_type": "care_responsibility",
+    "aggregate_id": "resp-case-sample-001",
+    "occurred_at": "2026-09-25T02:20:00+00:00",
+    "version": 3,
+    "summary": "计划用药 M-AML-002 在接收机构不可得",
+    "payload": {
+      "medication_code": "M-AML-002",
+      "reported_by": "王医生",
+      "disposition": "origin_supplies",
+      "substitute": null,
+      "doctor_confirmed_by": null,
+      "note": "镇药房本周缺货，由县医院慢病配送线每周二供药"
+    },
+    "case_id": "case-sample-001",
+    "seq": 13
+  },
+  {
+    "event_id": "evt-446c46017f4d",
+    "event_type": "PLAN_REVISED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-28T02:20:00+00:00",
+    "version": 5,
+    "summary": "医生修订康复转出计划 v2：康复进展良好，强化平衡训练",
+    "payload": {
+      "plan_version": 2,
+      "supersedes": 1,
+      "signed_by": "神经内科 李医生",
+      "diagnosis_summary": "脑梗死稳定期，右侧肢体肌力 4 级",
+      "rehab_summary": "增加平衡训练，每周不少于 3 次",
+      "precautions": [
+        "防跌倒",
+        "血压控制目标 <140/90"
+      ],
+      "medications": [
+        {
+          "code": "M-ASP-001",
+          "name": "阿司匹林肠溶片",
+          "posology": "100mg qd"
+        },
+        {
+          "code": "M-AML-002",
+          "name": "苯磺酸氨氯地平片",
+          "posology": "5mg qd"
+        }
+      ],
+      "review_items": [
+        {
+          "code": "R-BP-01",
+          "name": "血压监测",
+          "schedule": "每日两次",
+          "threshold": "收缩压 >=180 触发上转评估"
+        },
+        {
+          "code": "R-LF-02",
+          "name": "肝肾功能",
+          "schedule": "下转后第 14 天"
+        }
+      ],
+      "required_capabilities": [
+        "medication",
+        "rehab_service",
+        "review_item"
+      ],
+      "change_note": "康复进展良好，强化平衡训练"
+    },
+    "case_id": "case-sample-001",
+    "seq": 14
+  },
+  {
+    "event_id": "evt-7bcd6c7b8eb1",
+    "event_type": "PLAN_VERSION_DELIVERED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-28T02:20:00+00:00",
+    "version": 6,
+    "summary": "计划 v2 送达 东岭乡卫生院",
+    "payload": {
+      "plan_version": 2,
+      "holder": "东岭乡卫生院",
+      "supersedes": 1
+    },
+    "case_id": "case-sample-001",
+    "seq": 15
+  },
+  {
+    "event_id": "evt-7467438615da",
+    "event_type": "PLAN_VERSION_DELIVERED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-28T02:20:00+00:00",
+    "version": 7,
+    "summary": "计划 v2 送达 西河镇卫生院",
+    "payload": {
+      "plan_version": 2,
+      "holder": "西河镇卫生院",
+      "supersedes": 1
+    },
+    "case_id": "case-sample-001",
+    "seq": 16
+  },
+  {
+    "event_id": "evt-ae9211679c51",
+    "event_type": "PLAN_VERSION_ACKNOWLEDGED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-28T03:20:00+00:00",
+    "version": 8,
+    "summary": "西河镇卫生院 确认收到计划 v2",
+    "payload": {
+      "plan_version": 2,
+      "holder": "西河镇卫生院"
+    },
+    "case_id": "case-sample-001",
+    "seq": 17
+  },
+  {
+    "event_id": "evt-9acfab27b6d6",
+    "event_type": "PLAN_VERSION_ACKNOWLEDGED",
+    "aggregate_type": "recovery_plan",
+    "aggregate_id": "plan-case-sample-001",
+    "occurred_at": "2026-09-28T04:20:00+00:00",
+    "version": 9,
+    "summary": "东岭乡卫生院 确认收到计划 v2",
+    "payload": {
+      "plan_version": 2,
+      "holder": "东岭乡卫生院"
+    },
+    "case_id": "case-sample-001",
+    "seq": 18
+  },
+  {
+    "event_id": "evt-32e6f7f8edeb",
+    "event_type": "FOLLOWUP_SCHEDULED",
+    "aggregate_type": "followup_result",
+    "aggregate_id": "followup-49f7b318f2a1",
+    "occurred_at": "2026-10-04T04:20:00+00:00",
+    "version": 1,
+    "summary": "预约随访，截止 2026-10-04T04:20:00+00:00",
+    "payload": {
+      "due_at": "2026-10-04T04:20:00+00:00",
+      "responsible_org": "西河镇卫生院",
+      "plan_version": 2
+    },
+    "case_id": "case-sample-001",
+    "seq": 19
+  },
+  {
+    "event_id": "evt-013ff463a693",
+    "event_type": "FOLLOWUP_RECORDED",
+    "aggregate_type": "followup_result",
+    "aggregate_id": "followup-49f7b318f2a1",
+    "occurred_at": "2026-10-04T04:20:00+00:00",
+    "version": 2,
+    "summary": "随访结果登记：symptom_worsened",
+    "payload": {
+      "result": "symptom_worsened",
+      "abnormal_items": [
+        {
+          "code": "R-BP-01",
+          "value": "192/114",
+          "threshold_exceeded": true
+        }
+      ],
+      "note": "晨起见头痛伴呕吐，血压持续升高"
+    },
+    "case_id": "case-sample-001",
+    "seq": 20
+  },
+  {
+    "event_id": "evt-5a324b6e9ed7",
+    "event_type": "CARE_REESCALATED",
+    "aggregate_type": "care_responsibility",
+    "aggregate_id": "resp-case-sample-001",
+    "occurred_at": "2026-10-04T04:35:00+00:00",
+    "version": 4,
+    "summary": "症状恶化，西河镇卫生院 申请重新上转：血压骤升伴头痛呕吐，疑似病情反复",
+    "payload": {
+      "reason": "血压骤升伴头痛呕吐，疑似病情反复",
+      "abnormal_item": "R-BP-01",
+      "followup_id": "followup-49f7b318f2a1",
+      "incident_detail": "",
+      "from_org": "西河镇卫生院",
+      "to_org": "清溪县人民医院",
+      "offer_id": "offer-95e0b3d82d9c"
+    },
+    "case_id": "case-sample-001",
+    "seq": 21
+  },
+  {
+    "event_id": "evt-ebc64a923a2b",
+    "event_type": "REESCALATION_RECEIVED",
+    "aggregate_type": "care_responsibility",
+    "aggregate_id": "resp-case-sample-001",
+    "occurred_at": "2026-10-04T05:15:00+00:00",
+    "version": 5,
+    "summary": "原机构 清溪县人民医院 接收重新上转患者",
+    "payload": {
+      "received_by": "县医院急诊 赵医生",
+      "reescalation_id": "resp-case-sample-001",
+      "note": "120 接回，已收住神经内科"
+    },
+    "case_id": "case-sample-001",
+    "seq": 22
+  },
+  {
+    "event_id": "evt-5e311aee4ea8",
+    "event_type": "CASE_CLOSED",
+    "aggregate_type": "referral_case",
+    "aggregate_id": "case-sample-001",
+    "occurred_at": "2026-10-11T05:15:00+00:00",
+    "version": 2,
+    "summary": "案例结案：再上转后县医院完成后续治疗，本次下转流程闭环",
+    "payload": {
+      "reason": "再上转后县医院完成后续治疗，本次下转流程闭环"
+    },
+    "case_id": "case-sample-001",
+    "seq": 23
+  }
+]
