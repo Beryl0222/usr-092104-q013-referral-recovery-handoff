@@ -23,7 +23,15 @@
         "HANDOFF_OFFERED",
         "RESPONSIBILITY_ACCEPTED",
         "ARRIVAL_CONFIRMED",
-        "CARE_REESCALATED"
+        "CARE_REESCALATED",
+        "CASE_OPENED",
+        "PLAN_REVISED",
+        "HANDOFF_DECLINED",
+        "FOLLOWUP_RECORDED",
+        "DISRUPTION_REPORTED",
+        "DISRUPTION_RESOLVED",
+        "NOTICE_DELIVERED",
+        "CASE_CLOSED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +40,8 @@
         "recovery_plan",
         "handoff_offer",
         "care_responsibility",
-        "followup_result"
+        "followup_result",
+        "handoff_case"
       ]
     },
     "aggregate_id": {
@@ -50,6 +59,10 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件业务负载，键由事件类型约定；信封字段保持兼容，仅可新增事件类型"
     }
   },
   "additionalProperties": true
